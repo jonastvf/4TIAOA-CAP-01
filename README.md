@@ -90,3 +90,81 @@ Com tempo, a detalhar
 # 🚩 Conclusão
 
 Detalhar a conclusão com o tempo
+
+🌱 Projeto Agro: Armazenamento de Dados em Banco SQL com Python
+📌 Descrição
+Este projeto tem como objetivo armazenar dados de sensores lidos a partir de um ESP32 em um banco de dados Oracle, utilizando Python e SQLAlchemy. As operações CRUD (Create, Read, Update, Delete) são implementadas para gerenciar os dados de forma estruturada, segura e eficiente.
+
+🗂️ Estrutura de Pastas
+projeto-agro/
+├── dados/
+│   └── saida_serial.txt
+├── models/
+│   └── models.py
+│   ├─_init_.py
+│ 
+│ 
+├── scripts/
+│   ├── database.py
+│
+│├── serial_reader.py
+│├── crud.py
+├── README.md
+└── requirements.txt
+🧠 Modelagem e Justificativa
+A estrutura do banco foi baseada no MER da Fase 2, com as seguintes entidades principais:
+
+UnidadeMedida: Representa o tipo de unidade (ex: Celsius, %).
+AreaCapturada: Representa a área onde os dados foram coletados.
+SensorMPX: Armazena os dados dos sensores, incluindo valor, data/hora, unidade e área.
+Uma trigger e uma sequence no Oracle garantem que o campo id_area_capturada seja preenchido automaticamente, assegurando a integridade referencial.
+
+
+⚙️ Funcionalidades CRUD
+Create: Inserção de novos dados de sensores.
+Read: Consulta de registros por ID.
+Update: Atualização de valores e relacionamentos.
+Delete: Remoção de registros existentes.
+
+
+🧪 Exemplo de Uso
+
+from crud import create_sensor, read_sensor, update_sensor, delete_sensor
+
+# Criar sensor
+sensor = create_sensor(30.5, 1, 1)
+
+# Ler sensor
+sensor_lido = read_sensor(sensor.id_sensor_mpx)
+
+# Atualizar sensor
+update_sensor(sensor.id_sensor_mpx, vlr_sensor_mpx=35.0)
+
+# Deletar sensor
+delete_sensor(sensor.id_sensor_mpx)
+
+
+
+🔌 Leitura Serial do ESP32
+O script serial_reader.py realiza a leitura contínua da porta serial e insere os dados automaticamente no banco de dados:
+
+import serial
+from crud import create_sensor
+
+ser = serial.Serial('COM3', 9600)
+
+while True:
+    if ser.in_waiting > 0:
+        line = ser.readline().decode('utf-8').strip()
+        try:
+            value = float(line)
+            create_sensor(value, 1, 1)
+        except ValueError:
+            print("Valor inválido:", line)
+
+
+🧾 Requisitos
+Python 3.10+
+cx_Oracle
+SQLAlchemy
+Oracle Database (ex: Oracle XE)
