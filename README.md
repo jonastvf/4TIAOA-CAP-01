@@ -20,6 +20,15 @@
 
 ---
 
+## 👩‍🏫 Professores:
+### Tutor(a) 
+- Leonardo Ruiz Orbana
+### Coordenador(a)
+- <a href="https://www.linkedin.com/company/inova-fusca">André Godoi Chiovato</a>
+
+<br>
+<hr>
+
 # 📌 Introdução
 
 ## 📄 Descrição da Atividade
