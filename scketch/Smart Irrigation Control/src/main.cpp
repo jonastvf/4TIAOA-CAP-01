@@ -17,10 +17,13 @@
  * banco de dados SQL com fins de análise.       *
  *************************************************/
 
+
 #include <DHT.h>
+
 
 #define DHTPIN 15       
 #define DHTTYPE DHT22  
+
 
 DHT dht(DHTPIN, DHTTYPE);  
 
@@ -29,6 +32,7 @@ DHT dht(DHTPIN, DHTTYPE);
 #define PHOSPHORUS_SENSOR 14
 #define PUMP 16
 
+// declare functions
 void logo();
 void humidityValue();
 void sensorsValue();
@@ -43,7 +47,6 @@ pinMode(PUMP, OUTPUT);
 
 Serial.begin(9600);  
 dht.begin();  
-
 logo();       
 
 }
@@ -54,11 +57,13 @@ humidityValue();
 sensorsValue();
 irrigationControl();
 
+// Separate the readings
 Serial.println("==============================");
 delay(2000);
 
 }
 
+// Function reads the humidity value from the DHT sensor
 void humidityValue(){
   
 float humidity = dht.readHumidity();  
@@ -75,8 +80,10 @@ Serial.println(" %");
 
 }
 
+// Function reads the sensor pH, phosphorus and potassium
 void sensorsValue(){
 
+  // Read the pH sensor value and map it to a pH value
 float phValue= analogRead(PH_SENSOR);
 float phState = map(phValue, 0, 4095, 0, 14);
 
@@ -111,6 +118,7 @@ Serial.println(" ");
 
 }
 
+// The function controls the irrigation system via the DHT sensor + relay
 void irrigationControl(){
 
 const int humidity_threshold = 50;
@@ -128,7 +136,7 @@ else{
   }
 }
 
-
+// Function resposable for printing the logo
 void logo() {
 
 String logo_pt1 = "___________                        _________      .__          __  .__";
