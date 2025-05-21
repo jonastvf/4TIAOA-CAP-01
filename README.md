@@ -20,6 +20,15 @@
 
 ---
 
+## 👩‍🏫 Professores:
+### Tutor(a) 
+- Leonardo Ruiz Orbana
+### Coordenador(a)
+- <a href="https://www.linkedin.com/company/inova-fusca">André Godoi Chiovato</a>
+
+<br>
+<hr>
+
 # 📌 Introdução
 
 ## 📄 Descrição da Atividade
@@ -83,10 +92,6 @@ Após essa etapa, você pode analisar o código, fazer compilação e teste do c
 
 <hr>
 
-## 🐍 Código Python + CRUD com Banco de Dados
-
-Com tempo, a detalhar
-
 # 🚩 Conclusão
 
 Detalhar a conclusão com o tempo
@@ -129,25 +134,34 @@ Delete: Remoção de registros existentes.
 
 🧪 Exemplo de Uso
 
+```py
 from crud import create_sensor, read_sensor, update_sensor, delete_sensor
+```
 
 # Criar sensor
+```py
 sensor = create_sensor(30.5, 1, 1)
+```
 
 # Ler sensor
+```py
 sensor_lido = read_sensor(sensor.id_sensor_mpx)
+```
 
 # Atualizar sensor
+```py
 update_sensor(sensor.id_sensor_mpx, vlr_sensor_mpx=35.0)
+```
 
 # Deletar sensor
+```py
 delete_sensor(sensor.id_sensor_mpx)
-
+```
 
 
 🔌 Leitura Serial do ESP32
 O script serial_reader.py realiza a leitura contínua da porta serial e insere os dados automaticamente no banco de dados:
-
+```python
 import serial
 from crud import create_sensor
 
@@ -161,7 +175,7 @@ while True:
             create_sensor(value, 1, 1)
         except ValueError:
             print("Valor inválido:", line)
-
+```
 
 🧾 Requisitos
 Python 3.10+
