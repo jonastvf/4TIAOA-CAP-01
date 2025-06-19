@@ -10,11 +10,11 @@
 
 # 👨🏼‍💻 Integrantes
 
-1. [Levi Passos Silveira Marques](https://www.linkedin.com/in/raphael-dinelli-8a01b278/)
-2. [Raphael da Silva](www.linkedin.com/in/raphaelsilva-phael)
-3. [Jonas Tadeu V Fernandes]()
-4. [Ranna Leslie]()
-5. [Raphael Dinelli Neto]()
+- <a href="https://www.linkedin.com/in/jonastadeufernandes">Jonas T V Fernandes</a>
+- <a href="https://www.linkedin.com/in/rannaleslie">Ranna Leslie</a>
+- <a href="https://www.linkedin.com/in/raphaelsilva-phael">Raphael da Silva</a> 
+- <a href="https://www.linkedin.com/in/raphael-dinelli-8a01b278/">Raphael Dinelli Neto</a> 
+- <a href="https://www.linkedin.com/company/inova-fusca">Levi Passos Silveira Marques</a>
 
 ### GRUPO SP e Interior
 
@@ -33,7 +33,7 @@
 
 ## 📄 Descrição da Atividade
 
-Nesta fase do projeto, a FarmTech Solutions avança na aplicação de sensores físicos integrados a um sistema de irrigação inteligente. O objetivo é desenvolver um sistema físico (simulado) que colete dados de sensores de umidade, nutrientes e pH e controle uma bomba de irrigação conforme os valores obtidos. Os dados também devem ser armazenados em um banco de dados SQL, com possibilidade de visualização e análises estatísticas.
+Nesta fase do projeto, a FarmTech Solutions avança na aplicação de sensores físicos integrados a um sistema de irrigação inteligente. O objetivo é desenvolver um sistema físico (simulado) que colete dados de sensores de umidade, nutrientes e pH e controle uma bomba de irrigação conforme os valores obtidos. Para melhorar a forma de como os dados vão ser exibidos, acrescentamos um Display LCD e a visualização através do monitor serial plotter da temperatura e umidade, exibindo de forma gráfica. Os dados também devem ser armazenados em um banco de dados SQL, com possibilidade de visualização e análises estatísticas.
 
 ## 🔍 Descrição Detalhada
 
@@ -51,6 +51,21 @@ Este projeto tem como objetivo simular um sistema inteligente de monitoramento a
 
 ### ⚙️ Funcionamento:
 Levamos em consideração o plantio de tomates em estufas, logo essa hortaliça é necessário que o umidade esteja entre 50% e 80%. O ESP32 realiza a leitura dos sensores e aciona uma bomba de irrigação simulada por meio de um relé virtual. O relé funciona como um interruptor, e seu estado (ligado/desligado) é indicado por um LED embutido (aceso = irrigação ativa; apagado = irrigação inativa). A lógica de controle é definida com base nos valores lidos dos sensores, ou seja, **umidade menor 50%, aciona o relé.**
+
+### 📺 Display LCD
+Ao invés de exibir os dados recebidos pelo sensores no monitor serial, isso é exibi diretamente no Display LCD (20x4) para monitoramento sem a necessidade usuário estar conectado com a porta COM e receber monitoramento atráves pela USB. Agora é possivel verificar as informações do sensores pelo Display, acompanhado com um botão vermelho que permite que o usuário troque de menu e veja as outras informações.
+- **Primeiro estado do botão = 0:**<br>
+Exibir título, temperatura e umidade.<br><br>
+- **Segundo estado do botão = 1:**<br>
+Exibir título, PH do solo e status da bomba.<br><br>
+- **Terceiro estado do botão = 2:**<br>
+Exibir título, Fosforo e Potassio.<br><br>
+- **Após o terceiro estado, ele volta ao primeiro estado**
+
+
+### 📈 Serial Plotter
+Utilizando o monitor serial plotter, é possivel você vê de forma gráfica o comportamento do sensor de temperatura e umidade. Isso facilita análise comportamental e consegue tirar vários insight. 
+
 
 ### 🗃️ Banco de Dados:
 Os dados obtidos pelo ESP32 são exibidos no monitor serial da Wokwi e, posteriormente, inseridos manualmente em um banco de dados Oracle SQL simulado em Python, com suporte completo às operações CRUD (Create, Read, Update, Delete). Essa etapa visa exercitar a integração entre sistemas embarcados e bancos de dados para análise posterior.
@@ -84,7 +99,7 @@ code --install-extension wokwi.wokwi-vscode
 <img src="./assets/home-platformio.png">
 <br>
 
-- <a href="https://github.com/Phaeld/1TIAOA-CAP-01">Baixe no repositório arquivo zip e extraí o projeto</a>
+- <a href="https://github.com/jonastvf/4TIAOA-CAP-01">Baixe no repositório arquivo zip e extraí o projeto</a>
 
 <hr>
 
